@@ -61,3 +61,31 @@ dashboard_port = 7500 ## dashboard port
 dashboard_user = admin
 dashboard_pwd = admin
 ```
+
+4. Download and unzip FRP from github. (Client)
+```bash
+$ sudo yum install wget
+$ wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
+$ tar -zxvf frp_0.27.1_linux_amd64.tar.gz
+$ cd frp_0.27.1_linux_amd64
+$ rm -rf frps*
+```
+
+5. Modify frps.ini file. (Server)
+```bash
+$ vim frpc.ini
+
+[common]
+server_addr = xxx.xxx.xxx.xxx # frp server, orale cloud machine IP
+server_port = 7000 ## frp server port
+admin_addr = 127.0.0.1 ## frp client admin IP
+admin_port = 7400 ## frpc client port
+
+[ssh]
+type = tcp
+local_port = 22 ## local port
+remote_port = 6000 ## remote port on frp server (for forward local port ss)
+use_encryption = true
+use_compression = true
+```
+
