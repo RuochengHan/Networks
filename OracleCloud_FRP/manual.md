@@ -62,7 +62,20 @@ dashboard_user = admin
 dashboard_pwd = admin
 ```
 
-4. Download and unzip FRP from github. (Client)
+4. Set firewall. (Server)
+```bash
+# set tcp port 6000 and 7000 open to public
+$ firewall-cmd --zone=public --add-port=7000/tcp --permanent
+$ firewall-cmd --zone=public --add-port=6000/tcp --permanent
+
+# check and make sure opening port
+$ firewall-cmd --permanent --zone=public --list-ports
+
+# reload firewall
+$ firewall-cmd --reload
+```
+
+5. Download and unzip FRP from github. (Client)
 ```bash
 $ sudo yum install wget
 $ wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
@@ -71,7 +84,7 @@ $ cd frp_0.27.1_linux_amd64
 $ rm -rf frps*
 ```
 
-5. Modify frps.ini file. (Server)
+6. Modify frpc.ini file. (Client)
 ```bash
 $ vim frpc.ini
 
@@ -89,10 +102,18 @@ use_encryption = true
 use_compression = true
 ```
 
-6. Start frp:
+7. Start frp: Id success, both print out some infomation.
 ```bash
 $ (server) frps ./frps -c frps.ini
 $ (client) frps ./frpc -c frpc.ini
 ```
 
+8. Check the connection from another computer.
+```bash
+$ ssh clientusername@serverIP -p 6000
+# then type client user passwd
+# it should be the same as ssh clientusername@clientIP
+```
+
+## Possible issues ##
 
