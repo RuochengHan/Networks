@@ -130,10 +130,10 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 
 ### References ###
 
-[1] https://serverok.in/allow-icmp-ping-in-oracle-cloud#:~:text=Oracle%20cloud%20do%20not%20allow,see%20%E2%80%9CVirtual%20Cloud%20Network%E2%80%9D.&text=To%20allow%20ICMP%2C%20you%20can%20add%20a%20new%20Rule%20for%20ICMP. 
+[1]. https://serverok.in/allow-icmp-ping-in-oracle-cloud#:~:text=Oracle%20cloud%20do%20not%20allow,see%20%E2%80%9CVirtual%20Cloud%20Network%E2%80%9D.&text=To%20allow%20ICMP%2C%20you%20can%20add%20a%20new%20Rule%20for%20ICMP. 
 
-[2] https://cloud.tencent.com/developer/article/1622549 
+[2]. https://cloud.tencent.com/developer/article/1622549 
 
-[3] https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 
+[3]. https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 
 
-[4] https://gabrieltanner.org/blog/port-forwarding-frp
+[4]. https://gabrieltanner.org/blog/port-forwarding-frp
