@@ -38,3 +38,8 @@ ssh cloud
 ```
 
 2. 
+```bash
+sudo yum install wget
+···
+
+3. 
