@@ -97,7 +97,7 @@ admin_port = 7400 ## frpc client port
 [ssh]
 type = tcp
 local_port = 22 ## local port
-remote_port = 6000 ## remote port on frp server (for forward local port ss)
+remote_port = 6000 ## remote port on frp server (for forward local port 22)
 use_encryption = true
 use_compression = true
 ```
