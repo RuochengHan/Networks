@@ -1,6 +1,7 @@
-# Build a FRP server using always free oracle cloud machine #
+# Build a FRP server (for NAT traversal) using always free oracle cloud machine #
 
-The always free instance is 1 Core AMD cpu (EYPC), 1 GB memory, ~40 GB SSD, and 0.48 Gbps network.
+The always free instance is 1 Core AMD cpu (EYPC), 1 GB memory, ~40 GB SSD, and 0.48 Gbps network.\
+You need another cloud VM or local computer as frp client (which you want to have NAT traversal). If your local computer already has public IP or only a controlable router is between your local computer and public IP, there is **no need** for NAT traversal. In the latter case, you only need to set your local computer as **DMZ** machine in route manage page (192.168.1.1 or similar).
 
 ## Register and setup of oracle cloud machine ##
 
