@@ -39,7 +39,7 @@ Host cloud
 $ ssh cloud
 ```
 
-2. Download and unzip FRP from github (Server)
+2. Download and unzip FRP from github. (Server)
 ```bash
 $ sudo yum install wget
 $ wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
@@ -48,7 +48,7 @@ $ cd frp_0.27.1_linux_amd64
 $ rm -rf frpc*
 ```
 
-3. Modify frps.ini file.
+3. Modify frps.ini file. (Server)
 ```bash
 $ vim frps.ini
 
