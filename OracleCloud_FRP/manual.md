@@ -1,6 +1,6 @@
 # Build a FRP server using always free oracle cloud machine #
 
-The always free instance is 1 core AMD cpu (EYPC), 1 GB memory, ~40 GB SSD, and 10 M 
+The always free instance is 1 Core AMD cpu (EYPC), 1 GB memory, ~40 GB SSD, and 0.48 Gbps network.
 
 ## Register and setup of oracle cloud machine ##
 
@@ -14,4 +14,7 @@ The always free instance is 1 core AMD cpu (EYPC), 1 GB memory, ~40 GB SSD, and 
 
 5. In your instance, Click **Start**.
 
-6. 
+6. Click corresponding **Virtual Cloud Network**. In the **Subnet** section click corresponding subnet name. In the **Security Lists** section, click corresponding security list name. 
+
+7. Click **Add Ingress Rules**. Add rules: TCP Source 0.0.0.0/0 Destination port range 6000,7000 (for FRP port forwardings); ICMP Source 0.0.0.0/0 Type and Code ALL (for ping).
+
