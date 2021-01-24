@@ -22,9 +22,9 @@ Add rules: TCP Source 0.0.0.0/0 Destination port range 6000,7000 (for FRP port f
 
 8. Upload Private Key and Public Key to client computer.
 
-9. Add ssh config.
+9. Add ssh config. (Client)
 ```bash
-$ vim ~/.ssh/config
+$ (client) vim ~/.ssh/config
 ```bash
 Host cloud
     User opc # oracle username
@@ -34,23 +34,23 @@ Host cloud
 
 ## Setup FRP ##
 
-1. Login to the oracle server \
+1. Login to the oracle server. (Client)
 ```bash
-$ ssh cloud
+$ (client) ssh cloud
 ```
 
 2. Download and unzip FRP from github. (Server)
 ```bash
-$ sudo yum install wget
-$ wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
-$ tar -zxvf frp_0.27.1_linux_amd64.tar.gz
-$ cd frp_0.27.1_linux_amd64
-$ rm -rf frpc*
+$ (server) sudo yum install wget
+$ (server) wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
+$ (server) tar -zxvf frp_0.27.1_linux_amd64.tar.gz
+$ (server) cd frp_0.27.1_linux_amd64
+$ (server) rm -rf frpc*
 ```
 
 3. Modify frps.ini file. (Server)
 ```bash
-$ vim frps.ini
+$ (server) vim frps.ini
 
 [common]
 bind_port = 7000   ## VM binding port for conecting to client
@@ -65,28 +65,28 @@ dashboard_pwd = admin
 4. Set firewall. (Server)
 ```bash
 # set tcp port 6000 and 7000 open to public
-$ firewall-cmd --zone=public --add-port=7000/tcp --permanent
-$ firewall-cmd --zone=public --add-port=6000/tcp --permanent
+$ (server) firewall-cmd --zone=public --add-port=7000/tcp --permanent
+$ (server) firewall-cmd --zone=public --add-port=6000/tcp --permanent
 
 # check and make sure opening port
-$ firewall-cmd --permanent --zone=public --list-ports
+$ (server) firewall-cmd --permanent --zone=public --list-ports
 
 # reload firewall
-$ firewall-cmd --reload
+$ (server) firewall-cmd --reload
 ```
 
 5. Download and unzip FRP from github. (Client)
 ```bash
-$ sudo yum install wget
-$ wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
-$ tar -zxvf frp_0.27.1_linux_amd64.tar.gz
-$ cd frp_0.27.1_linux_amd64
-$ rm -rf frps*
+$ (client) sudo yum install wget
+$ (client) wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
+$ (client) tar -zxvf frp_0.27.1_linux_amd64.tar.gz
+$ (client) cd frp_0.27.1_linux_amd64
+$ (client) rm -rf frps*
 ```
 
 6. Modify frpc.ini file. (Client)
 ```bash
-$ vim frpc.ini
+$ (client) vim frpc.ini
 
 [common]
 server_addr = xxx.xxx.xxx.xxx # frp server, orale cloud machine IP
@@ -110,7 +110,7 @@ $ (client) frps ./frpc -c frpc.ini
 
 8. Check the connection from another computer.
 ```bash
-$ ssh clientusername@serverIP -p 6000
+$ (another computer) ssh clientusername@serverIP -p 6000
 # then type client user passwd
 # it should be the same as ssh clientusername@clientIP
 ```
