@@ -89,3 +89,10 @@ use_encryption = true
 use_compression = true
 ```
 
+6. Start frp:
+```bash
+$ (server) frps ./frps -c frps.ini
+$ (client) frps ./frpc -c frpc.ini
+```
+
+
