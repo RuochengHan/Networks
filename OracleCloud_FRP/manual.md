@@ -41,11 +41,11 @@ $ ssh cloud
 
 2. Download and unzip FRP from github (Server)
 ```bash
-sudo yum install wget
-wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
-tar -zxvf frp_0.27.1_linux_amd64.tar.gz
-cd frp_0.27.1_linux_amd64
-rm -rf frpc*
+$ sudo yum install wget
+$ wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
+$ tar -zxvf frp_0.27.1_linux_amd64.tar.gz
+$ cd frp_0.27.1_linux_amd64
+$ rm -rf frpc*
 ```
 
 3. 
