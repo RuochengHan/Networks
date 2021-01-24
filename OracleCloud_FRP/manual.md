@@ -53,9 +53,9 @@ $ (server) rm -rf frpc*
 $ (server) vim frps.ini
 
 [common]
-bind_port = 7000   ## VM binding port for conecting to client
-vhost_http_port = 80 ## VM http port
-vhost_https_port = 443 ## VM https port
+bind_port = 7000   ## frp server binding port for conecting to client
+vhost_http_port = 80 ## frp server http port
+vhost_https_port = 443 ## frp server https port
 dashboard_port = 7500 ## dashboard port
 # dashboard
 dashboard_user = admin
@@ -116,4 +116,14 @@ $ (another computer) ssh clientusername@serverIP -p 6000
 ```
 
 ## Possible issues ##
+1. Cannot login to the oracle (or other cloud) frp server. \
+Check whether it is open to the public, like setting White list.\
+Check if the ssh key is set correctly.\
+
+2. Cannot ping the cloud server IP. \
+Check if ICMP is set to public.
+
+3. frp client cannot connect to frp server. \
+Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is reloaded.
+
 
