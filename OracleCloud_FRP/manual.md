@@ -23,18 +23,18 @@ Add rules: TCP Source 0.0.0.0/0 Destination port range 6000,7000 (for FRP port f
 8. Upload Private Key and Public Key to client computer.
 
 9. vim ~/.ssh/config \
-`bash
+```bash
 Host cloud
     User opc # oracle username
     Hostname xxx.xxx.xxx.xxx #orale cloud machine IP
     IdentityFile ~/.ssh/id_rsa_cloud # you Key file
-`
+```
 
 ## Setup FRP ##
 
 1. Login to the oracle server \
-`bash
+```bash
 ssh cloud
-`
+```
 
 2. 
