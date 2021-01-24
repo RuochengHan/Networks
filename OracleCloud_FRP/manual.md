@@ -22,7 +22,7 @@ Add rules: TCP Source 0.0.0.0/0 Destination port range 6000,7000 (for FRP port f
 
 8. Upload Private Key and Public Key to client computer.
 
-9. 
+9. Add ssh config.
 ```bash
 $ vim ~/.ssh/config
 ```bash
@@ -48,7 +48,7 @@ $ cd frp_0.27.1_linux_amd64
 $ rm -rf frpc*
 ```
 
-3. 
+3. Modify frps.ini file.
 ```bash
 $ vim frps.ini
 
