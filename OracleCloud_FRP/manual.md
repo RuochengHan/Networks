@@ -22,7 +22,9 @@ Add rules: TCP Source 0.0.0.0/0 Destination port range 6000,7000 (for FRP port f
 
 8. Upload Private Key and Public Key to client computer.
 
-9. vim ~/.ssh/config \
+9. 
+```bash
+$ vim ~/.ssh/config
 ```bash
 Host cloud
     User opc # oracle username
@@ -34,12 +36,28 @@ Host cloud
 
 1. Login to the oracle server \
 ```bash
-ssh cloud
+$ ssh cloud
 ```
 
-2. 
+2. Download and unzip FRP from github (Server)
 ```bash
 sudo yum install wget
-···
+wget https://github.com/fatedier/frp/releases/download/v0.27.1/frp_0.27.1_linux_amd64.tar.gz # or any newer version
+tar -zxvf frp_0.27.1_linux_amd64.tar.gz
+cd frp_0.27.1_linux_amd64
+rm -rf frpc*
+```
 
 3. 
+```bash
+$ vim frps.ini
+
+[common]
+bind_port = 7000   ## VM binding port for conecting to client
+vhost_http_port = 80 ## VM http port
+vhost_https_port = 443 ## VM https port
+dashboard_port = 7500 ## dashboard port
+# dashboard
+dashboard_user = admin
+dashboard_pwd = admin
+```
