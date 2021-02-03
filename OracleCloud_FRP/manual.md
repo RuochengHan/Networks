@@ -106,8 +106,8 @@ use_compression = true
 
 7. Start frp: Id success, both print out some infomation.
 ```bash
-$ (server) ./frps -c frps.ini
-$ (client) ./frpc -c frpc.ini
+$ (server) sudo ./frps -c frps.ini
+$ (client) sudo ./frpc -c frpc.ini
 ```
 
 8. Check the connection from another computer.
