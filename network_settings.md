@@ -1,4 +1,4 @@
-1. If DNS service is lost on CentOS system:
+1. If DNS service is lost on CentOS 7 system:
 ```bash
 /etc/NetworkManager/NetworkManager.conf：
 [main]
