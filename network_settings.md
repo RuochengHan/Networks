@@ -10,5 +10,9 @@ $ systemctl restart NetworkManager.service
 /etc/resolv.conf:
 nameserver 114.114.114.114
 nameserver 8.8.8.8
+```
 
+2. network interface lost:
+```bash
+$ systemctl start NetworkManager
 ```
