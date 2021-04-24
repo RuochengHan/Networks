@@ -17,8 +17,3 @@ nameserver 8.8.8.8
 $ systemctl start NetworkManager
 ```
 
-3. mount Windows' harddisk to Linux:
-```bash
-# pay attention to space in Windows username "\ "
-sudo mount -t cifs //winIP/winfolder /mnt/win -o username=winsuer,password=winpass
-```
