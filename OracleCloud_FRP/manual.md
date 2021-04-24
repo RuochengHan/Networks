@@ -137,3 +137,9 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 3. https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 
 
 4. https://gabrieltanner.org/blog/port-forwarding-frp
+
+
+# Flask Application Over HTTPS #
+### References ###
+1. https://www.jianshu.com/p/8f95fc005a47
+2. https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
