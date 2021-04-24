@@ -140,6 +140,10 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 
 
 # Flask Application Over HTTPS #
+Use "Let's Encrypt" https://letsencrypt.org/getting-started/ for the HTTPS forwarding.
+Nginx is used to forward HTTP to HTTPS
+
 ### References ###
+
 1. https://www.jianshu.com/p/8f95fc005a47
 2. https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
