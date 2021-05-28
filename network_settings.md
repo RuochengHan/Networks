@@ -17,3 +17,11 @@ nameserver 8.8.8.8
 $ systemctl start NetworkManager
 ```
 
+3. .ssh/config, use proxy:
+```bash
+Host targetserver
+Hostname targetserver.domain
+User username
+ProxyCommand ssh -q -Y username@proxyserver.domain -W %h:%p
+IdentityFile ~/.ssh/id_rsa
+```
