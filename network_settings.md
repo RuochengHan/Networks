@@ -35,11 +35,11 @@ $ sudo sudo nmtui
 $ ip route show
 ```
 
-6. double route connection with first the priority:
+6. double route connections with first the priority:
 ```bash
 $ sudo route add -net 0.0.0.0/0 wlp3s0 # wireless interface
 $ sudo route add -net 0.0.0.0/0 gw 10.0.144.1 # wireless router
-$ sudo route add -net 10.0.0.0/8 enp5s0 # eth interface
-$ sudo route add -net 0.0.0.0/0 gw 192.168.1.1 # eth router
+$ sudo route add -net 192.0.0.0/8 enp5s0 # eth interface
+$ sudo route add -net 192.0.0.0/8 gw 192.168.1.1 # eth router
 ```
 
