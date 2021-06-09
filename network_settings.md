@@ -25,3 +25,8 @@ User username
 ProxyCommand ssh -q -Y username@proxyserver.domain -W %h:%p
 IdentityFile ~/.ssh/id_rsa
 ```
+4. centos wifi start:
+```bash
+sudo service NetworkManager start
+sudo sudo nmtui
+```
