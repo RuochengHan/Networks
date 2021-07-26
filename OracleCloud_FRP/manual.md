@@ -143,6 +143,11 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 Use "Let's Encrypt" https://letsencrypt.org/getting-started/ for the HTTPS forwarding.
 Nginx is used to forward HTTP to HTTPS
 
+Renew certificate (note that 5 failures per hour):
+```bash
+# (server) acme.sh --renew -d www.example.com --force
+```
+
 ### References ###
 
 1. https://www.jianshu.com/p/8f95fc005a47
