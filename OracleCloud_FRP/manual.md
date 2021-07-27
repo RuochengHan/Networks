@@ -143,14 +143,100 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 Use "Let's Encrypt" https://letsencrypt.org/getting-started/ for the HTTPS forwarding.
 Nginx is used to forward HTTP to HTTPS
 
+**Close frps first.**
+
 1. nginx
-2. acme
+```bash
+# (server) wget http://tengine.taobao.org/download/tengine-x.x.x.tar.gz
+# (server) tar zxvf tengine-x.x.x.tar.gz
+# (server) cd tengine-x.x.x
+# (server) yum install gcc openssl-devel zlib-devel -
+# (server) ./configure --with-http_stub_status_module --with-http_ssl_module
+# (server) make && make install
+# (server) cd nginx/sbin
+# (server) ./nginx # start
+# (server) ./nginx -t # test whether srart normally
+
+# set tcp port 80 and 443 open to public
+# (server) firewall-cmd --zone=public --add-port=80/tcp --permanent
+# (server) firewall-cmd --zone=public --add-port=443/tcp --permanent
+
+# check and make sure opening port
+# (server) firewall-cmd --permanent --zone=public --list-ports
+
+# reload firewall
+# (server) firewall-cmd --reload
+
+# (server) lsof -i:80 # check 80 (also for 443)
+# remember also open the port 80/443 fior your cloud machine on web (e.g. Oracle)
+```
 if success, you will see: "Welcome to tengine! If you see this page, the tengine web server is successfully installed and working. Further configuration is required..."
 in your domain (close frps).
 
-Renew certificate (note that 5 failures per hour):
+
+2. acme
 ```bash
-# (server) acme.sh --renew -d www.example.com --force
+# (server) curl https://get.acme.sh | sh 
+# (server) ./acme.sh --issue -d example.com ---webroot /usr/local/nginx/html
+# (server) ./acme.sh --installcert -d example.com --key-file /usr/local/nginx/ssl/example.com.key --fullchain-file /usr/local/nginx/ssl/fullchain.cer --reloadcmd "/usr/local/nginx/sbin/nginx -s reload"
+# (server) vim /usr/local/nginx/conf/nginx.conf
+
+# modify /usr/local/nginx/conf/nginx.conf as https://www.jianshu.com/p/8f95fc005a47 https one.
+# (server) /usr/local/nginx/sbin/nginx -t
+# (server) /usr/local/nginx/sbin/nginx -s reload
+```
+
+3. connect to frp
+```bash
+# (server) vim frps.ini
+
+[common]
+bind_port = 7000
+vhost_http_port = 8080
+dashboard_port = 7500
+dashboard_user = xxxxxx
+dashboard_pwd = xxxxxx
+
+
+$ (client) vim frpc.ini
+
+[common]
+server_addr = xxx.xxx.xxx.xxx # frp server, orale cloud machine IP
+server_port = 7000 ## frp server port
+admin_addr = 127.0.0.1 ## frp client admin IP
+admin_port = 7400 ## frpc client port
+
+[ssh]
+type = tcp
+local_port = 22 ## local port
+remote_port = 6000 ## remote port on frp server (for forward local port 22)
+use_encryption = true
+use_compression = true
+
+[static_file] # if needed
+type = tcp
+remote_port = 5010 # remember to also open this port on server and server supplier (e.g. Oracle)
+plugin = static_file
+plugin_local_path = path-to-static-on-client-web-app
+plugin_strip_prefix = static
+#plugin_http_user = xxxxxx
+#plugin_http_pwd = xxxxxx
+
+
+[web]
+type = http
+local_ip = 127.0.0.1
+local_port = 5000
+custom_domains = example.com
+#http_user = xxxxxx
+#http_pwd = xxxxxx
+```
+
+
+
+Renew certificate (should be automatic):
+```bash
+# (server) acme.sh --renew -d example.com --force
 ```
 
 ### References ###
