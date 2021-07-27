@@ -222,7 +222,6 @@ plugin_strip_prefix = static
 #plugin_http_user = xxxxxx
 #plugin_http_pwd = xxxxxx
 
-
 [web]
 type = http
 local_ip = 127.0.0.1
@@ -230,9 +229,13 @@ local_port = 5000
 custom_domains = example.com
 #http_user = xxxxxx
 #http_pwd = xxxxxx
+
+# modify /usr/local/nginx/conf/nginx.conf as https://www.jianshu.com/p/8f95fc005a47 
+# 6. section: Add one line "proxy_pass..." and comment two lines.
+# (server) /usr/local/nginx/sbin/nginx -t
+# (server) /usr/local/nginx/sbin/nginx -s reload
 ```
-
-
+Then start frps and frpc.
 
 Renew certificate (should be automatic):
 ```bash
