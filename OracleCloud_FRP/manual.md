@@ -143,6 +143,16 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 Use "Let's Encrypt" https://letsencrypt.org/getting-started/ for the HTTPS forwarding.
 Nginx is used to forward HTTP to HTTPS
 
+1. nginx
+if success, you will see: "Welcome to tengine! If you see this page, the tengine web server is successfully installed and working. Further configuration is required."
+in your domain (close frps).
+
+
+For online documentation and support please refer to tengine.taobao.org.
+
+Thank you for using tengine."
+
+
 Renew certificate (note that 5 failures per hour):
 ```bash
 # (server) acme.sh --renew -d www.example.com --force
