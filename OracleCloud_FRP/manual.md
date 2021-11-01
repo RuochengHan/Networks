@@ -241,6 +241,7 @@ Renew certificate (should be automatic):
 ```bash
 # (server) cd /root/.acme.sh/
 # comment "return 301 https://example.com$request_uri;" in /usr/local/nginx/sbin/nginx
+# this will force to sue https, and would cause error in renew if not commented out
 # (server) /usr/local/nginx/sbin/nginx -t
 # (server) /usr/local/nginx/sbin/nginx -s reload
 # (server) acme.sh --renew -d example.com --force
