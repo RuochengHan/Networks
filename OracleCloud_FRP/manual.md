@@ -239,6 +239,7 @@ Then start frps and frpc.
 
 Renew certificate (should be automatic):
 ```bash
+# (server) cd /root/.acme.sh/
 # (server) acme.sh --renew -d example.com --force
 ```
 
