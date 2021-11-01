@@ -240,7 +240,13 @@ Then start frps and frpc.
 Renew certificate (should be automatic):
 ```bash
 # (server) cd /root/.acme.sh/
+# comment "return 301 https://example.com$request_uri;" in /usr/local/nginx/sbin/nginx
+# (server) /usr/local/nginx/sbin/nginx -t
+# (server) /usr/local/nginx/sbin/nginx -s reload
 # (server) acme.sh --renew -d example.com --force
+# uncomment "return 301 https://example.com$request_uri;" in /usr/local/nginx/sbin/nginx
+# (server) /usr/local/nginx/sbin/nginx -t
+# (server) /usr/local/nginx/sbin/nginx -s reload
 ```
 
 ### References ###
