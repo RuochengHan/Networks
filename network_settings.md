@@ -43,7 +43,8 @@ $ sudo route add -net 192.0.0.0/8 enp5s0 # eth interface
 $ sudo route add -net 192.0.0.0/8 gw 192.168.1.1 # eth router
 ```
 
-7. disable ipv6 if it is default for the router. (in this case the router table is hidden)
+7. disable ipv6 if it is default for the router, in this case the router table is hidden.
+and traceroute/route -n not work
 ```bash
 $ sudo nmcli connection modify $wifiname ipv6.method "ignore"
 $ sudo nmcli connection up $wifiname
