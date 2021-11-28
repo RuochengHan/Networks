@@ -50,3 +50,8 @@ $ sudo nmcli connection up $wifiname
 # check
 $ ip address show $interfacename
 ```
+
+8. check wifi speed:
+```bash
+nmcli dev wifi
+```
