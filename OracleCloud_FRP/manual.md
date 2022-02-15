@@ -237,7 +237,7 @@ custom_domains = example.com
 ```
 Then start frps and frpc.
 
-Renew certificate (should be automatic):
+Renew certificate (should be automatic, but not work, so manually every 3 month):
 ```bash
 # (server) cd /root/.acme.sh/
 # comment "return 301 https://example.com$request_uri;" in /usr/local/nginx/conf/nginx.conf
