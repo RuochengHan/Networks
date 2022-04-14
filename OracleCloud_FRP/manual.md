@@ -128,6 +128,9 @@ Check if ICMP is set to public.
 3. frp client cannot connect to frp server. \
 Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is reloaded.
 
+4. public IP change. \
+(1) change oracle cloud IP (2) change domain binded IP  (3) wait for 30min
+
 ### References ###
 
 1. https://serverok.in/allow-icmp-ping-in-oracle-cloud#:~:text=Oracle%20cloud%20do%20not%20allow,see%20%E2%80%9CVirtual%20Cloud%20Network%E2%80%9D.&text=To%20allow%20ICMP%2C%20you%20can%20add%20a%20new%20Rule%20for%20ICMP. 
