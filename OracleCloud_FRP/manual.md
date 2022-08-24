@@ -235,22 +235,22 @@ custom_domains = example.com
 
 # modify /usr/local/nginx/conf/nginx.conf as https://www.jianshu.com/p/8f95fc005a47 
 # 6. section: Add one line "proxy_pass..." and comment two lines.
-# (server) /usr/local/nginx/sbin/nginx -t
-# (server) /usr/local/nginx/sbin/nginx -s reload
+(root) (server) /usr/local/nginx/sbin/nginx -t
+(root) (server) /usr/local/nginx/sbin/nginx -s reload
 ```
 Then start frps and frpc.
 
 Renew certificate (should be automatic, but not work, so manually every 3 month):
 ```bash
-# (server) cd /root/.acme.sh/
+(root) (server) cd /root/.acme.sh/
 # comment "return 301 https://example.com$request_uri;" in /usr/local/nginx/conf/nginx.conf
 # this will force to sue https, and would cause error in renew if not commented out
-# (server) /usr/local/nginx/sbin/nginx -t
-# (server) /usr/local/nginx/sbin/nginx -s reload
-# (server) acme.sh --renew -d example.com --force
+(root) (server) /usr/local/nginx/sbin/nginx -t
+(root) (server) /usr/local/nginx/sbin/nginx -s reload
+(root) (server) acme.sh --renew -d example.com --force
 # uncomment "return 301 https://example.com$request_uri;" in /usr/local/nginx/conf/nginx.conf
-# (server) /usr/local/nginx/sbin/nginx -t
-# (server) /usr/local/nginx/sbin/nginx -s reload
+(root) (server) /usr/local/nginx/sbin/nginx -t
+(root) (server) /usr/local/nginx/sbin/nginx -s reload
 ```
 
 ### References ###
