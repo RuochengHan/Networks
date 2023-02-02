@@ -135,6 +135,8 @@ Make sure 7000 port is open on both Ingress Rules and firewall, and firewall is 
 Change putty keygen version from 3 to 2 and reload private key for the conversion
 https://superuser.com/questions/1647896/putty-key-format-too-new-when-using-ppk-file-for-putty-ssh-key-authentication
 
+6. change to root. \
+$ sudo -s
 ### References ###
 
 1. https://serverok.in/allow-icmp-ping-in-oracle-cloud#:~:text=Oracle%20cloud%20do%20not%20allow,see%20%E2%80%9CVirtual%20Cloud%20Network%E2%80%9D.&text=To%20allow%20ICMP%2C%20you%20can%20add%20a%20new%20Rule%20for%20ICMP. 
