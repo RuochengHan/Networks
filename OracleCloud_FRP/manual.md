@@ -185,7 +185,8 @@ in your domain (close frps).
 
 2. acme
 ```bash
-# (server) curl https://get.acme.sh | sh 
+# (server) curl https://get.acme.sh | sh
+# (server) acme.sh --register-account -m yourmail.com
 # (server) ./acme.sh --issue -d example.com --webroot /usr/local/nginx/html
 # (server) ./acme.sh --installcert -d example.com --key-file /usr/local/nginx/ssl/example.com.key --fullchain-file /usr/local/nginx/ssl/fullchain.cer --reloadcmd "/usr/local/nginx/sbin/nginx -s reload"
 # (server) vim /usr/local/nginx/conf/nginx.conf
