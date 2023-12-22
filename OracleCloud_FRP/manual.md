@@ -234,7 +234,7 @@ plugin_strip_prefix = static
 
 [web]
 type = http
-local_ip = 127.0.0.1
+local_ip = 127.0.0.1 # so that you can directly use flask run
 local_port = 5000
 custom_domains = example.com
 #http_user = xxxxxx
