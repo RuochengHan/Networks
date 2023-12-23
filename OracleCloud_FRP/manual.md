@@ -184,14 +184,14 @@ in your domain (close frps).
 Note that 80 is **required** for Letsencypt.
 
 2. acme
-After seeing "Welcome to engine!..." from IP:80 (Note that if you bond two IPs, e.g. IP1:80 IP2:80, both should see "Welcome to engine!..."),\\
+After seeing "Welcome to engine!..." from IP:80 (Note that if you bond two IPs, e.g. IP1:80 IP2:80, both should see "Welcome to engine!..."),\
 one can carry on the following processes:
 ```bash
 # (server) curl https://get.acme.sh | sh
 # (server) acme.sh --register-account -m yourmail.com
 # (server) ./acme.sh --issue -d example.com --webroot /usr/local/nginx/html --test --debug
 ```
-Above will use test sever to certificate, with 60 fail limit per hour. Otherwise 5 fail limit per hour.\\
+Above will use test sever to certificate, with 60 fail limit per hour. Otherwise 5 fail limit per hour.\
 Certificate with Letsencypt:
 ```bash
 # (server) ./acme.sh --issue -d example.com --webroot /usr/local/nginx/html --server letsencrypt
