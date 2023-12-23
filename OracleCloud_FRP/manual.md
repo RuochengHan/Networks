@@ -184,7 +184,8 @@ in your domain (close frps).
 Note that 80 is **required** for Letsencypt.
 
 2. acme
-After seeing "Welcome to engine!..." from IP:80 (Note that if you bond two IPs, e.g. IP1:80 IP2:80, both should see "Welcome to engine!..."),\
+After seeing "Welcome to engine!..." from IP:80 \
+(Note that if you bond two IPs, e.g. IP1:80 IP2:80, both should see "Welcome to engine!...", otherwise turn off unavailble from your domain supplier, e.g. NameCheap),\
 one can carry on the following processes:
 ```bash
 # (server) curl https://get.acme.sh | sh
