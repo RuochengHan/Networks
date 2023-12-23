@@ -177,17 +177,24 @@ Nginx is used to forward HTTP to HTTPS
 # (server) firewall-cmd --reload
 
 # (server) lsof -i:80 # check 80 (also for 443)
-# remember also open the port 80/443 fior your cloud machine on web (e.g. Oracle)
+# remember also open the port 80/443 for your cloud machine on web (e.g. Oracle)
 ```
-if success, you will see: "Welcome to tengine! If you see this page, the tengine web server is successfully installed and working. Further configuration is required..."
+if success, you will see: "Welcome to tengine! If you see this page, the tengine web server is successfully installed and working. Further configuration is required..." from IP:80.
 in your domain (close frps).
-
+Note that 80 is **required** for Letsencypt.
 
 2. acme
+After seeing "Welcome to engine!..." from IP:80 (Note that if you bond two IPs, e.g. IP1:80 IP2:80, both should see "Welcome to engine!..."),\\
+one can carry on the following processes:
 ```bash
 # (server) curl https://get.acme.sh | sh
 # (server) acme.sh --register-account -m yourmail.com
-# (server) ./acme.sh --issue -d example.com --webroot /usr/local/nginx/html
+# (server) ./acme.sh --issue -d example.com --webroot /usr/local/nginx/html --test --debug
+```
+Above will use test sever to certificate, with 60 fail limit per hour. Otherwise 5 fail limit per hour.\\
+Certificate with Letsencypt:
+```bash
+# (server) ./acme.sh --issue -d example.com --webroot /usr/local/nginx/html --server letsencrypt
 # (server) ./acme.sh --installcert -d example.com --key-file /usr/local/nginx/ssl/example.com.key --fullchain-file /usr/local/nginx/ssl/fullchain.cer --reloadcmd "/usr/local/nginx/sbin/nginx -s reload"
 # (server) vim /usr/local/nginx/conf/nginx.conf
 
