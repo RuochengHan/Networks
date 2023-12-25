@@ -307,8 +307,8 @@ http {
 
     server {
         listen       80;
-        server_name  www.ruochenghan.com;
-        return 301 https://www.ruochenghan.com$request_uri;
+        server_name  $url;
+        return 301 https://$url$request_uri;
 
         #charset koi8-r;
 
@@ -404,8 +404,8 @@ http {
 
 
         location / {
-            #proxy_pass http://43.134.57.144:8080;
-            proxy_pass http://www.ruochenghan.com:8080;
+            #proxy_pass http:/$IP:8080;
+            proxy_pass http://$url:8080;
             root   html;
             index  index.html index.htm;
         }
