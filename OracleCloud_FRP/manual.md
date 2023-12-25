@@ -389,7 +389,7 @@ http {
     #
     server {
         listen       443 ssl;
-        server_name  www.ruochenghan.com;
+        server_name  $url;
         
 
         ssl_certificate /usr/local/nginx/ssl/fullchain.cer;
