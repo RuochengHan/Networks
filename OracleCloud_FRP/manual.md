@@ -249,7 +249,7 @@ custom_domains = example.com
 #http_pwd = xxxxxx
 
 # modify /usr/local/nginx/conf/nginx.conf as https://www.jianshu.com/p/8f95fc005a47 
-# 6. section: Add one line "proxy_pass..." and comment two lines. Not that use example.com:8080 rather than IP:8080
+# 6. section: Add one line "proxy_pass..." and comment two lines.
 (root) (server) /usr/local/nginx/sbin/nginx -t
 (root) (server) /usr/local/nginx/sbin/nginx -s reload
 ```
@@ -268,18 +268,9 @@ Renew certificate (should be automatic, but not work, so manually every 3 month)
 (root) (server) /usr/local/nginx/sbin/nginx -s reload
 ```
 
-example nginx:
+example nginx: https://zhuanlan.zhihu.com/p/424471359
 ```bash
-#user  nobody;
 worker_processes  1;
-
-#error_log  logs/error.log;
-#error_log  logs/error.log  notice;
-#error_log  logs/error.log  info;
-#error_log  "pipe:rollback logs/error_log interval=1d baknum=7 maxsize=2G";
-
-#pid        logs/nginx.pid;
-
 
 events {
     worker_connections  1024;
@@ -290,128 +281,46 @@ http {
     include       mime.types;
     default_type  application/octet-stream;
 
-    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-    #                  '$status $body_bytes_sent "$http_referer" '
-    #                  '"$http_user_agent" "$http_x_forwarded_for"';
-
-    #access_log  logs/access.log  main;
-    #access_log  "pipe:rollback logs/access_log interval=1d baknum=7 maxsize=2G"  main;
 
     sendfile        on;
-    #tcp_nopush     on;
 
-    #keepalive_timeout  0;
     keepalive_timeout  65;
 
-    #gzip  on;
-
     server {
-        listen       80;
-        server_name  $url;
-        return 301 https://$url$request_uri;
-
-        #charset koi8-r;
-
-        #access_log  logs/host.access.log  main;
-        #access_log  "pipe:rollback logs/host.access_log interval=1d baknum=7 maxsize=2G"  main;
-
-        location / {
-            root   html;
-            index  index.html index.htm;
-        }
-
-        #error_page  404              /404.html;
-
-        # redirect server error pages to the static page /50x.html
-        #
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
-
-        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-        #
-        #location ~ \.php$ {
-        #    proxy_pass   http://127.0.0.1;
-        #}
-
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-        #
-        #location ~ \.php$ {
-        #    root           html;
-        #    fastcgi_pass   127.0.0.1:9000;
-        #    fastcgi_index  index.php;
-        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-        #    include        fastcgi_params;
-        #}
-
-        # pass the Dubbo rpc to Dubbo provider server listening on 127.0.0.1:20880
-        #
-        #location /dubbo {
-        #    dubbo_pass_all_headers on;
-        #    dubbo_pass_set args $args;
-        #    dubbo_pass_set uri $uri;
-        #    dubbo_pass_set method $request_method;
-        #
-        #    dubbo_pass org.apache.dubbo.samples.tengine.DemoService 0.0.0 tengineDubbo dubbo_backend;
-        #}
-
-        # deny access to .htaccess files, if Apache's document root
-        # concurs with nginx's one
-        #
-        #location ~ /\.ht {
-        #    deny  all;
-        #}
+        listen 80;
+        server_name www.ruochenghan.com;
+        return 301 https://www.ruochenghan.com$request_uri;
     }
-
-    # upstream for Dubbo rpc to Dubbo provider server listening on 127.0.0.1:20880
-    #
-    #upstream dubbo_backend {
-    #    multi 1;
-    #    server 127.0.0.1:20880;
-    #}
-
-    # another virtual host using mix of IP-, name-, and port-based configuration
-    #
-    #server {
-    #    listen       8000;
-    #    listen       somename:8080;
-    #    server_name  somename  alias  another.alias;
-
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
-
-
-    # HTTPS server
-    #
     server {
-        listen       443 ssl;
-        server_name  $url;
-        
-
+        listen 443 ssl;
+        server_name www.ruochenghan.com;
         ssl_certificate /usr/local/nginx/ssl/fullchain.cer;
         ssl_certificate_key /usr/local/nginx/ssl/www.ruochenghan.com.key;
-
-        ssl_session_cache shared:SSL:1m;
         ssl_session_timeout 5m;
-
-        ssl_ciphers HIGH:!aNULL:!MD5;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置
         ssl_prefer_server_ciphers on;
 
-
-
         location / {
-            #proxy_pass http:/$IP:8080;
-            proxy_pass http://$url:8080;
-            root   html;
-            index  index.html index.htm;
+            proxy_pass http://43.134.57.144:8080;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-NginX-Proxy true;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_max_temp_file_size 0;
+            proxy_redirect off;
+            proxy_read_timeout 240s;
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /usr/share/nginx/html;
         }
     }
-
 }
+
 ```
 
 ### References ###
